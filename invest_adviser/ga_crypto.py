@@ -63,7 +63,7 @@ class StrategyTrainer:
 
 def main():
     random.seed(42)
-    scenario_file = "input/market_patterns.csv"
+    scenario_file = "invest_adviser/input/market_patterns.csv"
     df_scenarios = pd.read_csv(scenario_file)
     for col in ["start", "end"]:
         df_scenarios[col] = pd.to_datetime(df_scenarios[col])
