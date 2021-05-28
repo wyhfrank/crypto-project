@@ -10,5 +10,8 @@ pandas = "*"
 xlrd = "*"
 openpyxl = "*"
 deap = "*"
+mysql-connector-python = "*"
+flask = "*"
+python-dotenv = "*"
 
 [dev-packages]

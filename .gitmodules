@@ -1,0 +1,3 @@
+[submodule "tutorials/flask-example"]
+	path = tutorials/flask-example
+	url = https://github.com/miguelgrinberg/flasky.git
