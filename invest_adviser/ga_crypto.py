@@ -5,7 +5,7 @@ from scenario import Scenario
 from simulator import run_simulation
 from optimize.base import EaSimpleOptimizer
 from strategy import ExpRatioStrategy, LinearRatioStrategy
-from tools.utils import calc_earn_rate
+from tools.utils import calc_earn_rate, str2datetime
 
 
 class StrategyTrainer:
@@ -65,8 +65,7 @@ def main():
     random.seed(42)
     scenario_file = "invest_adviser/input/market_patterns.csv"
     df_scenarios = pd.read_csv(scenario_file)
-    for col in ["start", "end"]:
-        df_scenarios[col] = pd.to_datetime(df_scenarios[col])
+    df_scenarios = str2datetime(df_scenarios)
     scenarios = []
     for i, row in df_scenarios.iterrows():
         if row["skip"] == "yes":

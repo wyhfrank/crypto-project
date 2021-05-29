@@ -1,3 +1,4 @@
+import pandas as pd
 from matplotlib import pyplot as plt
 
 
@@ -9,6 +10,12 @@ def percent_calc(value, pre_value):
 def calc_earn_rate(final_asset, initial_asset):
     earn_rate = percent_calc(final_asset, initial_asset)
     return earn_rate
+
+
+def str2datetime(df, cols=["start", "end"]):
+    for col in cols:
+        df[col] = pd.to_datetime(df[col])
+    return df
 
 
 def plot_history(df_history, fn="plot.png"):

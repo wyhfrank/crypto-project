@@ -17,3 +17,4 @@
 
 - [Python development and production environment with debugging in Docker - Qiita](https://qiita.com/sebastianrettig/items/a52f6a5c36288db7b823)
 - [Using Alpine can make Python Docker builds 50× slower](https://pythonspeed.com/articles/alpine-docker-python/)
+- [Remote Python Development in Visual Studio Code | Python](https://devblogs.microsoft.com/python/remote-python-development-in-visual-studio-code/)

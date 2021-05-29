@@ -122,3 +122,6 @@ config = {
 
     'default': DevelopmentConfig
 }
+
+
+print(config)

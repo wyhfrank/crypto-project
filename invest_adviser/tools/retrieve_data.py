@@ -3,7 +3,8 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import pandas as pd
 from cryptocompare import cryptocompare
-from invest_adviser.tools.utils import percent_calc
+from utils import percent_calc, str2datetime
+
 
 
 def get_historical_price(crypto_name="BTC",
@@ -44,14 +45,15 @@ def get_ticker(exchange="bitbank"):
 
 
 def test():
-    parameter_file = "../invest_adviser/input/market_patterns.xlsx"
+    parameter_file = "./input/market_patterns.csv"
     # simulation_result_base = "simulations"
     # result_file = os.path.join(simulation_result_base, f"result_{datetime.now().strftime('%Y%m%d%H%M%S')}.xlsx")
 
-    df_para = pd.read_excel(parameter_file)
+    df_para = pd.read_csv(parameter_file)
+    df_para = str2datetime(df_para)
 
     for i, row in df_para.iterrows():
-        id = row["#"]
+        id_ = row["id_"]
         crypto_name = row["crypto_name"]
         start = row["start"]
         end = row["end"]
