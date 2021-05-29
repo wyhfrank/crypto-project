@@ -3,6 +3,9 @@
 
 FROM python:3.8-slim-buster AS base
 
+# https://medium.com/rahasak/configure-docker-timezone-in-linux-71893fe51499
+ENV TZ Asia/Tokyo
+
 WORKDIR /work
 
 # RUN apk add --no-cache gcc musl-dev linux-headers

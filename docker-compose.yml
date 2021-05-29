@@ -12,6 +12,7 @@ services:
       MYSQL_DATABASE: crypto_strategy
       MYSQL_USER: user
       MYSQL_PASSWORD: Qwert1!
+      - TZ=Asia/Tokyo
     networks:
       - app-tier
 
@@ -37,6 +38,7 @@ services:
       - FLASK_DEBUG=1
       - FLASK_APP=flasky
       - FLASK_ENV=development
+      - TZ=Asia/Tokyo
     # entrypoint: [ "python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "-m" , "flask", "run", "--host=0.0.0.0", "--port", "5000" ]
     entrypoint: [ "python3", "-m", "flask", "run", "--host=0.0.0.0", "--port", "5000" ]
     
