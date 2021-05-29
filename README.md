@@ -29,6 +29,7 @@ vscode will create a docker image and container with the Dockerfile in the root 
 
 1. Swith to the `Run and Debug` tab (`⇧⌘D` / `ctrl+shift+d`)
 1. Run `Python: Current File`
+1. (Interactive): Right click -> `Run Current File in Interactive Window`
 
 ### Start the `dev` sever locally
 
