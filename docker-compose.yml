@@ -16,16 +16,15 @@ services:
       - app-tier
 
   web:
-    image: flask_web
+    image: flask_web_dev
     restart: always
     build:
       context: .
-      target: develop
+      target: dev
     ports: 
       - "5000:5000"
-      # - "5678:5678" # Debugger
-    container_name: "flask_web"
-    # working_dir: "/work/"
+      - "5678:5678" # Debugger
+    container_name: "flask_web_dev"
     tty: true
     depends_on:
       - mysql_db
@@ -36,7 +35,8 @@ services:
 #      - pycache_volume:/work/.cache
     environment: 
       - FLASK_DEBUG=1
-      # entrypoint: [ "python", "-m", "debugpy", "--listen", "0.0.0.0:5678", "-m", "app",  "--wait-for-client", "--multiprocess", "-m", "flask", "run", "--host", "0.0.0.0", "--port", "5000" ]
+      - FLASK_APP=flasky
+    # entrypoint: [ "python", "-m", "debugpy", "--listen", "0.0.0.0:5678", "-m", "flasky",  "--wait-for-client", "--multiprocess", "-m", "flask", "run", "--host", "0.0.0.0", "--port", "5000" ]
     entrypoint: [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port", "5000" ]
     
 
