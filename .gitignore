@@ -142,3 +142,5 @@ cython_debug/
 output/
 cache/
 .idea/
+
+.DS_Store
