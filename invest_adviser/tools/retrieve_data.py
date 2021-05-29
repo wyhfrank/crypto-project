@@ -38,6 +38,11 @@ def get_historical_price(crypto_name="BTC",
     return df
 
 
+def get_ticker(exchange="bitbank"):
+    # TODO: get the ticker data from the exchange
+    pass
+
+
 def test():
     parameter_file = "../invest_adviser/input/market_patterns.xlsx"
     # simulation_result_base = "simulations"

@@ -1,3 +1,6 @@
 [submodule "tutorials/flask-example"]
 	path = tutorials/flask-example
 	url = https://github.com/miguelgrinberg/flasky.git
+[submodule "tutorials/ccxt"]
+	path = tutorials/ccxt
+	url = https://github.com/ccxt/ccxt.git
