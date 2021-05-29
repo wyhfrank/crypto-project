@@ -1,6 +1,6 @@
 # https://qiita.com/sebastianrettig/items/a52f6a5c36288db7b823
 
-FROM python:3.7.6-buster AS base
+FROM python:3.8-slim-buster AS base
 
 WORKDIR /work
 

@@ -36,8 +36,8 @@ services:
     environment: 
       - FLASK_DEBUG=1
       - FLASK_APP=flasky
-    # entrypoint: [ "python", "-m", "debugpy", "--listen", "0.0.0.0:5678", "-m", "flasky",  "--wait-for-client", "--multiprocess", "-m", "flask", "run", "--host", "0.0.0.0", "--port", "5000" ]
-    entrypoint: [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port", "5000" ]
+    # entrypoint: [ "python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "-m" , "flask", "run", "--host=0.0.0.0", "--port", "5000" ]
+    entrypoint: [ "python3", "-m", "flask", "run", "--host=0.0.0.0", "--port", "5000" ]
     
 
 networks:
