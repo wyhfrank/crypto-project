@@ -1,10 +1,12 @@
 import os
+import asyncio
 from datetime import datetime, timedelta
+from pprint import pprint
 from dateutil.relativedelta import relativedelta
 import pandas as pd
 from cryptocompare import cryptocompare
 from utils import percent_calc, str2datetime
-
+import ccxt.async_support as ccxt
 
 
 def get_historical_price(crypto_name="BTC",
@@ -39,20 +41,51 @@ def get_historical_price(crypto_name="BTC",
     return df
 
 
-def get_ticker(exchange="bitbank"):
-    # TODO: get the ticker data from the exchange
-    pass
+async def fetch_ticker(exchange, symbol):
+    try:
+        result = await exchange.fetch_ticker(symbol)
+        return result
+    except ccxt.BaseError as e:
+        print(type(e).__name__, str(e), str(e.args))
+        raise e
+
+
+async def get_ticker(crypto_name="BTC", currency="JPY", exchange_id="bitbank"):
+    if not exchange_id in ccxt.exchanges:
+        raise ValueError(f"Exchange not supported: {exchange_id}")
+
+    symbol = f"{crypto_name}/{currency}"
+    exchange = getattr(ccxt, exchange_id)({
+        'enableRateLimit': True,
+    })
+    await exchange.load_markets()
+    ticker = await fetch_ticker(exchange, symbol)
+    return ticker
+
+
+def get_ohlcv(crypto_name="BTC", currency="JPY", exchange_id="bitbank"):
+    import ccxt
+    if not exchange_id in ccxt.exchanges:
+        raise ValueError(f"Exchange not supported: {exchange_id}")
+
+    symbol = f"{crypto_name}/{currency}"
+    exchange = getattr(ccxt, exchange_id)({
+        'enableRateLimit': True,
+    })
+    exchange.load_markets()
+    result = exchange.fetch_ohlcv(symbol, timeframe='1h')
+    return result
 
 
 def test():
-    parameter_file = "./input/market_patterns.csv"
+    pattern_file = "./input/market_patterns.csv"
     # simulation_result_base = "simulations"
     # result_file = os.path.join(simulation_result_base, f"result_{datetime.now().strftime('%Y%m%d%H%M%S')}.xlsx")
 
-    df_para = pd.read_csv(parameter_file)
-    df_para = str2datetime(df_para)
+    df_pattern = pd.read_csv(pattern_file)
+    df_pattern = str2datetime(df_pattern)
 
-    for i, row in df_para.iterrows():
+    for i, row in df_pattern.iterrows():
         id_ = row["id_"]
         crypto_name = row["crypto_name"]
         start = row["start"]
@@ -64,5 +97,11 @@ def test():
                              currency="USD")
 
 
+def test_ccxt():
+    results = asyncio.get_event_loop().run_until_complete(get_ohlcv())
+    pprint(results)
+
+
 if __name__ == '__main__':
-    test()
+    # test()
+    test_ccxt()

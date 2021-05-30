@@ -11,7 +11,15 @@
 
 - 如何事先知道安装Python packages的时候需要用到哪些系统层面的Library？（例如：libgcc）
 - 如何选择Python package的版本？
+- VSCode连接上docker container中开发，无法识别import的库
 
+```json
+{
+    "python.autoComplete.extraPaths": ["/usr/local/lib/python3.8/site-packages/"],
+    "python.pythonPath": "/usr/local/bin/python3",
+    "python.analysis.extraPaths": ["/usr/local/lib/python3.8/site-packages/"]
+}
+```
 
 ## 参考
 

@@ -31,6 +31,7 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
+		"donjayamanne.python-extension-pack",
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"lfs.vscode-emacs-friendly"
